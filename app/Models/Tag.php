@@ -9,6 +9,8 @@ use Spatie\Sluggable\SlugOptions;
 class Tag extends Model
 {
 
+    protected $fillable = ['title'];
+
     public function posts()
     {
         return $this->belongsToMany(Post::class);
@@ -23,7 +25,8 @@ class Tag extends Model
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug');
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
     }
 
 }

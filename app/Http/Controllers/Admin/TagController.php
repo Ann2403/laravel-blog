@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategory;
-use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class TagController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +16,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::query()->paginate(5);
-        return view('admin.categories.index', compact('categories'));
+        $tags = Tag::query()->paginate(5);
+        return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.tags.create');
     }
 
     /**
@@ -42,8 +42,8 @@ class CategoryController extends Controller
 //            'title' => 'required',
 //        ]);*/
 
-        Category::query()->create($request->all());
-        return redirect()->route('admin.categories.index')->with('success', 'Category add');
+        Tag::query()->create($request->all());
+        return redirect()->route('admin.tags.index')->with('success', 'Tag add');
     }
 
     /**
@@ -54,8 +54,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = Category::query()->find($id);
-        return view('admin.categories.edit', compact('category'));
+        $tag = Tag::query()->find($id);
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -67,10 +67,10 @@ class CategoryController extends Controller
      */
     public function update(StoreCategory $request, $id)
     {
-        $category = Category::query()->find($id);
-        $category->update($request->all());
+        $tag = Tag::query()->find($id);
+        $tag->update($request->all());
 
-        return redirect()->route('admin.categories.index')->with('success', 'Category changed');
+        return redirect()->route('admin.tags.index')->with('success', 'Tag changed');
     }
 
     /**
@@ -81,7 +81,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
-        return redirect()->route('admin.categories.index')->with('success', 'Category delete');
+        Tag::destroy($id);
+        return redirect()->route('admin.tags.index')->with('success', 'Tag delete');
     }
 }

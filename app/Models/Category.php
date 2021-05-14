@@ -8,6 +8,8 @@ use Spatie\Sluggable\SlugOptions;
 
 class Category extends Model
 {
+    protected $fillable = ['title'];
+
     //создаем связь таблицы с категориями и постами
     public function posts()
     {
@@ -23,8 +25,8 @@ class Category extends Model
     {
         return SlugOptions::create()
             ->generateSlugsFrom('title')
-            ->saveSlugsTo('slug');
+            ->saveSlugsTo('slug')
+            ->doNotGenerateSlugsOnUpdate();
     }
-
 
 }
