@@ -193,31 +193,25 @@
                             <p>Home</p>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item cat">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <i class="nav-icon fas fa-th"></i>
                             <p>
-                                Dashboard
+                                Categories
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="../../index.html" class="nav-link">
+                                <a href="{{route('admin.categories.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v1</p>
+                                    <p>List categories</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="../../index2.html" class="nav-link">
+                                <a href="{{route('admin.categories.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v2</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="../../index3.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Dashboard v3</p>
+                                    <p>Create category</p>
                                 </a>
                             </li>
                         </ul>
@@ -246,6 +240,17 @@
 </div>
 
 <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
+<script>
+    $('.nav-sidebar a').each(function () {
+        let location = window.location.protocol + '//' + window.location.host +
+            window.location.pathname;
+        let link = this.href;
+        if (link === location) {
+            $(this).addClass('active');
+            $(this).closest('.cat').addClass('menu-open');
+        }
+    });
+</script>
 
 </body>
 </html>

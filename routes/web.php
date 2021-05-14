@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\MainController;
+use \App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,4 +22,5 @@ Route::get('/', function () {
 //создаем группу роутов для "админки"
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('index');
+    Route::resource('/categories', CategoryController::class);
 });
