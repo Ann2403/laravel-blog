@@ -222,6 +222,12 @@
                             <p>Tags</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.posts.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-edit text-info"></i>
+                            <p>Posts</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -271,17 +277,6 @@
 </div>
 
 <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
-<script>
-    $('.nav-sidebar a').each(function () {
-        let location = window.location.protocol + '//' + window.location.host +
-            window.location.pathname;
-        let link = this.href;
-        if (link === location) {
-            $(this).addClass('active');
-            $(this).closest('.cat').addClass('menu-open');
-        }
-    });
-</script>
 
 </body>
 </html>

@@ -684,3 +684,26 @@
     $brand_variants.removeClass().addClass('custom-select mb-3 text-light border-0 ').addClass(active_brand_color)
   }
 })(jQuery)
+
+$('.nav-sidebar a').each(function () {
+    let location = window.location.protocol + '//' + window.location.host +
+        window.location.pathname;
+    let link = this.href;
+    if (link === location) {
+        $(this).addClass('active');
+        $(this).closest('.cat').addClass('menu-open');
+    }
+});
+
+$(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Ekko Lightbox
+    $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+        event.preventDefault();
+        $(this).ekkoLightbox({
+            alwaysShowClose: true
+        });
+    });
+})
