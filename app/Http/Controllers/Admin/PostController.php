@@ -19,7 +19,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::query()->paginate(5);
+        //получаем посты и связи category и tags
+        $posts = Post::query()->with('category', 'tags')->paginate(5);
         return view('admin.posts.index', compact('posts'));
     }
 

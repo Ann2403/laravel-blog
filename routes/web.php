@@ -1,10 +1,14 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Admin\MainController;
 use \App\Http\Controllers\Admin\TagController;
 use \App\Http\Controllers\Admin\CategoryController;
 use \App\Http\Controllers\Admin\PostController;
-use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 //создаем группу роутов для "админки"
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -28,3 +32,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('/tags', TagController::class);
     Route::resource('/posts', PostController::class);
 });
+
+Route::get('/register', [UserController::class, 'create'])->name('register.create');
+Route::post('/register', [UserController::class, 'store'])->name('register.store');
