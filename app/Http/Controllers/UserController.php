@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreLogin;
 use App\Http\Requests\StoreRegister;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -25,5 +26,32 @@ class UserController extends Controller
         session()->flash('success', 'User is registered');
         Auth::login($user);
         return redirect()->home();
+    }
+
+    public function auth() {
+        return view('user.authorize');
+    }
+
+    public function storeAuth(StoreLogin $request)
+    {
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            session()->flash('success', 'You are logged in');
+            if (Auth::user()->is_admin) {
+                // для блокировки обычных пользователей создаем Middleware
+                // регистрируем его для группы роутов "admin" в Kernel.php
+                // прописываем middleware для группы роутов "admin" в web.php
+                return redirect()->route('admin.index');
+            } else {
+                return redirect()->home();
+            }
+        }
+
+        return redirect()->back()->with('err', 'User is not found');
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('login.create');
     }
 }

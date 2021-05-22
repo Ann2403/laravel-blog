@@ -26,12 +26,20 @@ Route::get('/', function () {
 })->name('home');
 
 //создаем группу роутов для "админки"
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::prefix('admin')->middleware(['admin'])->name('admin.')->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('index');
     Route::resource('/categories', CategoryController::class);
     Route::resource('/tags', TagController::class);
     Route::resource('/posts', PostController::class);
 });
 
-Route::get('/register', [UserController::class, 'create'])->name('register.create');
-Route::post('/register', [UserController::class, 'store'])->name('register.store');
+Route::middleware(['guest'])->group(function () {
+    Route::get('/register', [UserController::class, 'create'])->name('register.create');
+    Route::post('/register', [UserController::class, 'store'])->name('register.store');
+
+    Route::get('/login', [UserController::class, 'auth'])->name('login.create');
+    Route::post('/login', [UserController::class, 'storeAuth'])->name('login.store');
+});
+
+
+Route::get('/logout', [UserController::class, 'logout'])->name('logout')->middleware('auth');
