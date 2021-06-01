@@ -44,5 +44,12 @@
     "/assets/admin/img/user5-128x128.jpg": "/assets/admin/img/user5-128x128.jpg",
     "/assets/admin/img/user6-128x128.jpg": "/assets/admin/img/user6-128x128.jpg",
     "/assets/admin/img/user7-128x128.jpg": "/assets/admin/img/user7-128x128.jpg",
-    "/assets/admin/img/user8-128x128.jpg": "/assets/admin/img/user8-128x128.jpg"
+    "/assets/admin/img/user8-128x128.jpg": "/assets/admin/img/user8-128x128.jpg",
+    "/assets/front/css/style.css": "/assets/front/css/style.css",
+    "/assets/front/js/main.js": "/assets/front/js/main.js",
+    "/assets/front/img/404.jpg": "/assets/front/img/404.jpg",
+    "/assets/front/img/image-01.jpg": "/assets/front/img/image-01.jpg",
+    "/assets/front/img/image-02.jpg": "/assets/front/img/image-02.jpg",
+    "/assets/front/img/logo.png": "/assets/front/img/logo.png",
+    "/assets/front/img/slider.jpg": "/assets/front/img/slider.jpg"
 }

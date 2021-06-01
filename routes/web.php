@@ -9,6 +9,8 @@ use \App\Http\Controllers\Admin\PostController;
 
 use App\Http\Controllers\UserController;
 
+use App\Http\Controllers\BlogController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +23,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [BlogController::class, 'index'])->name('blog');
+
+Route::get('/article', [BlogController::class, 'post'])->name('post');
 
 //создаем группу роутов для "админки"
 Route::prefix('admin')->middleware(['admin'])->name('admin.')->group(function () {
