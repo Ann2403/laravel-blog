@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Blog</title>
     <meta charset="utf-8">
@@ -55,7 +55,7 @@
         <div class="footer__main">
             <div class="row row-eq-height">
                 <div class="col-8 col-sm-7 col-md-9 col-lg-3 ">
-                    <div class="footer__item"><a class="consult_logo" href="#"><img src="assets/img/logo.png" alt=""/></a>
+                    <div class="footer__item"><a class="consult_logo" href="#"><img src="{{asset('assets/front/img/logo.png')}}" alt=""/></a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut laoreet ut lacus a tincidunt.</p>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer__copyright">2017 &copy; Copyright Awe7. All rights Reserved.</div>
+        <div class="footer__copyright"><script>document.write(new Date().getFullYear());</script> &copy; MyBlog</div>
     </footer><!-- End / footer -->
 
 </div>

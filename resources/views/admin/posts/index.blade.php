@@ -38,40 +38,40 @@
             <div class="card-body">
                 <table class="table table-bordered">
                     <thead>
-                    <tr>
-                        <th style="width: 10px">#</th>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Tags</th>
-                        <th>Date</th>
-                        <th style="width: 150px">Actions</th>
-                    </tr>
+                        <tr>
+                            <th style="width: 10px">#</th>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Tags</th>
+                            <th>Date</th>
+                            <th style="width: 150px">Actions</th>
+                        </tr>
                     </thead>
                     <tbody>
                     @foreach($posts as $post)
-                    <tr>
-                        <td>{{$post->id}}</td>
-                        <td>{{$post->title}}</td>
-                        <td>{{$post->category->title}}</td>
-                        <td>{{$post->tags->pluck('title')->join(', ')}}
-                        </td>
-                        <td>{{$post->created_at}}</td>
-                        <td>
-                            <a href="{{route('admin.posts.edit', $post->id)}}"
-                               type="button" class="btn btn-info float-left mr-1">
-                                <i class="fas fa-pen"></i>
-                            </a>
-                            <form action="{{route('admin.posts.destroy', $post->id)}}"
-                                  method="post" class="float-left">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger"
-                                        onclick="return confirm('Confirm deletion')">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>{{$post->id}}</td>
+                            <td>{{$post->title}}</td>
+                            <td>{{$post->category->title}}</td>
+                            <td>{{$post->tags->pluck('title')->join(', ')}}
+                            </td>
+                            <td>{{$post->created_at}}</td>
+                            <td>
+                                <a href="{{route('admin.posts.edit', $post->id)}}"
+                                   type="button" class="btn btn-info float-left mr-1">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                                <form action="{{route('admin.posts.destroy', $post->id)}}"
+                                      method="post" class="float-left">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger"
+                                            onclick="return confirm('Confirm deletion')">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
                     @endforeach
                     </tbody>
                 </table>

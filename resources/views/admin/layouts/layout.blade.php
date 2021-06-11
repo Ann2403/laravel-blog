@@ -19,7 +19,7 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                <a class="nav-link" data-widget="pushmenu" data-enable-remember="true" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="../../index3.html" class="nav-link">Home</a>
@@ -168,7 +168,7 @@
                     <img src="{{ asset('assets/admin/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">Admin</a>
                 </div>
             </div>
 
@@ -236,28 +236,7 @@
     </aside>
 
     <div class="content-wrapper">
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul class="list-unstyled">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-
-                    @if (session()->has('success'))
-                        <div class="alert alert-success">
-                            {{session('success')}}
-                        </div>
-                    @endif
-                </div>
-            </div>
-        </div>
+        @include('admin.layouts.alert')
 
         @yield('content')
     </div>
@@ -282,6 +261,9 @@
 <script  src="{{ asset('assets/admin/ckfinder/ckfinder.js') }}"></script>
 
 <script type="text/javascript">
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
 
     ClassicEditor
         .create( document.querySelector( '#content' ), {

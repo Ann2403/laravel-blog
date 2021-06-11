@@ -4,6 +4,8 @@
 /public/storage
 /storage/*.key
 /vendor
+/public/assets/admin/ckeditor5
+/public/assets/admin/ckfinder
 .env
 .env.backup
 .phpunit.result.cache

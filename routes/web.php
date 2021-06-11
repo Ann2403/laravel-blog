@@ -24,8 +24,9 @@ use App\Http\Controllers\BlogController;
 */
 
 Route::get('/', [BlogController::class, 'index'])->name('blog');
-
-Route::get('/article', [BlogController::class, 'post'])->name('post');
+Route::get('/article/{slug}', [BlogController::class, 'post'])->name('post');
+Route::get('/category/{slug}', [BlogController::class, 'category'])->name('post.category');
+Route::get('/tag/{slug}', [BlogController::class, 'tag'])->name('post.tag');
 
 //создаем группу роутов для "админки"
 Route::prefix('admin')->middleware(['admin'])->name('admin.')->group(function () {

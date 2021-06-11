@@ -30,6 +30,7 @@ mix.scripts([
     'resources/assets/admin/js/demo.js',
     'resources/assets/admin/plugins/select2/js/select2.full.min.js',
     'resources/assets/admin/plugins/ekko-lightbox/ekko-lightbox.min.js',
+    'resources/assets/admin/plugins/bs-custom-file-input/bs-custom-file-input.min.js',
 ], 'public/assets/admin/js/admin.js');
 
 mix.copy('resources/assets/admin/plugins/fontawesome-free/webfonts', 'public/assets/admin/webfonts');
