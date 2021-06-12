@@ -42,21 +42,43 @@
                                 </div>
                                 @endif
                                 <div>
-                                    <h2 class="post-01__title"><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h2>
+                                    <h2 class="post-01__title">
+                                        <a href="{{route('post', $post->slug)}}">{{$post->title}}</a>
+                                    </h2>
                                     <p>{!! $post->description !!}</p>
                                     <ul class="post-01__categories">
-                                        <li><a href="{{route('post.category', $post->category->slug)}}">{{$post->category->title}}</a></li>
+                                        <li>
+                                            <a href="{{route('post.category', $post->category->slug)}}">
+                                                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                                {{$post->category->title}}
+                                            </a>
+                                        </li>
                                         <li>
                                             @foreach($post->tags as $tag)
-                                                <a href="{{route('post.tag', $tag->slug)}}">{{$tag->title}}</a>
-                                                    @if (!$loop->last)
-                                                        ,
-                                                    @endif
+                                                @if ($loop->first)
+                                                    <a href="{{route('post.tag', $tag->slug)}}">
+                                                        <i class="fa fa-tags" aria-hidden="true"></i>
+                                                        {{$tag->title}}
+                                                    </a>
+                                                @else
+                                                    <a href="{{route('post.tag', $tag->slug)}}">
+                                                        {{$tag->title}}
+                                                    </a>
+                                                @endif
+
+                                                @if (!$loop->last)
+                                                    ,
+                                                @endif
                                             @endforeach
                                         </li>
                                     </ul>
-
-                                    <div class="post-01__time">{{$post->created_at}}</div>
+                                    <div class="post-01__time">
+                                        {{$post->getPostDate()}}
+                                    </div>
+                                    <div class="post-01__time" style="margin-left: 40px">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                        {{$post->view}}
+                                    </div>
                                 </div>
                             </div><!-- End Post  -->
                         @endforeach

@@ -4,64 +4,48 @@
     <!-- Content-->
     <div class="md-content">
         <div class="consult-postDetail">
-            <div class="image-full"><img src="assets/img/blogs/detail/1.jpg" alt=""></div>
+            <div class="image-full"><img src="{{$post->getImage()}}" alt=""></div>
             <div class="consult-postDetail"></div>
             <div class="container">
                 <div class="consult-postDetail__main">
-
-                    <!-- social-01 -->
-                    <div class="social-01 social-01__style-02">
-                        <nav class="social-01__navSocial"><a class="social-01__item" href="#"><i class="fa fa-facebook"></i></a><a class="social-01__item" href="#"><i class="fa fa-skype"></i></a><a class="social-01__item" href="#"><i class="fa fa-twitter"></i></a><a class="social-01__item" href="#"><i class="fa fa-instagram"></i></a>
-                        </nav>
-                    </div><!-- End / social-01 -->
-
                     <div class="row">
                         <div class="col-lg-10 col-xl-8 offset-0 offset-sm-0 offset-md-0 offset-lg-1 offset-xl-2 ">
                             <div class="consult-postDetail__content">
                                 <div class="row">
                                     <div class="col-xl-11 offset-0 offset-sm-0 offset-md-0 offset-lg-0 offset-xl-1 ">
-                                        <h1>Mark Warner To Oppose Sessions For Attorney General.</h1>
-                                        <ul class="consult-postDetail__meta">
-                                            <li><i class="fa fa-user" aria-hidden="true"></i> Admin</li>
-                                            <li><i class="fa fa-tags" aria-hidden="true"></i>Services    </li>
-                                            <li><i class="fa fa-comments-o" aria-hidden="true"></i>Comment</li>
-                                            <li><i class="fa fa-calendar-o" aria-hidden="true"></i>June 25th, 2017</li>
+                                        <h1>{{$post->title}}</h1>
+                                        <ul class="consult-postDetail__meta" style="margin-bottom: 10px">
+                                            <li>
+                                                <a href="{{route('post.category', $post->category->slug)}}">
+                                                    <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                                    {{$post->category->title}}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <i class="fa fa-tags" aria-hidden="true"></i>
+                                                @foreach($post->tags as $tag)
+                                                    <a href="{{route('post.tag', $tag->slug)}}">{{$tag->title}}</a>
+                                                    @if (!$loop->last)
+                                                        ,
+                                                    @endif
+                                                @endforeach
+                                            </li>
                                         </ul>
-                                        <p class="text">Nam elit ligula, egestas et ornare non, viverra eu justo. Aliquam ornare lectus ut pharetra dictum. Aliquam erat volutpat. In fringilla erat at eros pharetra faucibus. Nunc a magna eu lectus fringilla interdum luctus vitae diam. Morbi ac orci ac dolor pellentesque interdum vel accumsan risus. In vestibulum mattis turpis nec rhoncus. Maecenas facilisis commodo nunc, in blandit sem rutrum ac. Integer sit amet vehicula sem. Sed dictum arcu sit amet eros tempus pretium. Aenean lobortis risus purus.</p>
-                                    </div>
-                                </div>
-                                <div class="image-full"><img src="assets/img/blogs/detail/2.jpg" alt=""></div>
-                                <div class="row">
-                                    <div class="col-xl-11 offset-0 offset-sm-0 offset-md-0 offset-lg-0 offset-xl-1 ">
-                                        <p class="text">Maecenas lorem ex, euismod eget pulvinar non, facilisis ut leo. Quisque placerat purus in neque efficitur ornare. Nam at justo magna. Aliquam venenatis odio ante, non euismod augue porttitor eget. Maecenas nec viverra eros, eget euismod felis. Integer cursus libero sed lorem euismod, vel iaculis felis placerat. Pellentesque augue lacus, sodales et eros sed, molestie rhoncus ligula. Vivamus sed massa lorem. Suspendisse mollis lectus nec ex fermentum, in consectetur dolor egestas. Phasellus quis ipsum quis nisl ultricies sollicitudin id in dolor. Proin at consequat dui.</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-6 ">
-                                        <div class="image-full"><img src="assets/img/blogs/detail/4.jpg" alt=""></div>
-                                    </div>
-                                    <div class="col-lg-6 ">
-                                        <div class="image-full"><img src="assets/img/blogs/detail/3.jpg" alt=""></div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xl-11 offset-0 offset-sm-0 offset-md-0 offset-lg-0 offset-xl-1 ">
-                                        <p class="text">Sed ante nisl, fermentum et facilisis in, maximus sed ipsum. Cras hendrerit feugiat eros, ut fringilla nunc finibus sed. Quisque vitae dictum augue, vitae pretium sem. Proin tristique lobortis mauris nec mollis. Mauris id nibh sem. Vivamus ac ligula ac erat ultricies cursus semper ac enim. Aenean ac</p>
-                                    </div>
-                                </div>
-                                <blockquote>
-                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                </blockquote>
-                                <div class="row">
-                                    <div class="col-xl-11 offset-0 offset-sm-0 offset-md-0 offset-lg-0 offset-xl-1 ">
-                                        <p class="text">Suspendisse ac elit vitae est lacinia interdum eu sit amet mauris. Phasellus aliquam nisi sit amet libero mattis ornare. In varius nunc vel suscipit rhoncus. Nunc hendrerit nisl nec orci eleifend accumsan. Mauris nulla mi, egestas ac maximus ac, ultricies non tellus. Vestibulum varius purus nunc. Cr</p>
+                                        <ul class="consult-postDetail__meta">
+                                            <li><i class="fa fa-eye" aria-hidden="true"></i>{{$post->views}}</li>
+                                            <li><i class="fa fa-comments-o" aria-hidden="true"></i>Comment</li>
+                                            <li><i class="fa fa-calendar-o" aria-hidden="true"></i>{{$post->getPostDate()}}</li>
+                                        </ul>
+                                        <p class="text">{!! $post->content !!}</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Comment -->
                     <div class="row">
-                        <div class="col-lg-8 col-xl-6 offset-0 offset-sm-0 offset-md-0 offset-lg-2 offset-xl-3 ">
+                        <div class="col-lg-8 col-xl-6 offset-0 offset-sm-0 offset-md-0 offset-lg-2 offset-xl-3">
                             <h4 class="comment-heading">Comment <span>(2)</span></h4>
                             <ol class="comment-list">
                                 <li class="comment parent">
@@ -120,33 +104,6 @@
                                         </li>
                                     </ol>
                                 </li>
-
-                                <li class="comment">
-                                    <div class="comment-content">
-                                        <div class="comment-avatar">
-                                            <img alt="" src="assets/img/avatars/avatar-01.jpg" class="avatar photo">
-                                        </div><!-- .comment-avatar -->
-
-                                        <div class="comment-body">
-                                            <div class="comment-metadata">
-                                                <a href="#">
-                                                    <time datetime="2016-12-30T08:18:37+00:00">May 04, 2017</time>
-                                                </a>
-                                            </div><!-- .comment-metadata -->
-
-                                            <span class="fn">John Doe</span>
-
-                                            <div class="comment-text">
-                                                <p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisc</p>
-                                            </div>
-
-                                            <div class="comment-button">
-                                                <a href="#" class="like">like</a>
-                                                <a href="#" class="reply">reply</a>
-                                            </div>
-                                        </div><!-- .comment-body -->
-                                    </div><!-- .comment-content -->
-                                </li>
                             </ol>
 
                             <!-- form-01 -->
@@ -169,6 +126,7 @@
 
                         </div>
                     </div>
+                    <!-- End Comment -->
                 </div>
             </div>
         </div>
@@ -187,50 +145,34 @@
                 <!-- carousel__element owl-carousel -->
                 <div class="carousel__element owl-carousel" data-options='{"loop":false,"dots":false,"nav":false,"margin":30,"responsive":{"0":{"items":1},"768":{"items":2},"992":{"items":3}}}'>
 
-                    <!--  -->
-                    <div>
-                        <div class="post-01__media"><a href="#"><img src="assets/img/blogs/related-1.jpg" alt=""/></a>
-                        </div>
+                    <!-- Post -->
+                    @foreach($related_posts as $post)
                         <div>
-                            <ul class="post-01__categories">
-                                <li><a href="#">Business</a></li>
-                            </ul>
-                            <h2 class="post-01__title"><a href="#">How to Create and Manage SVG Sprites</a></h2>
-                            <div class="post-01__time">Aug 14, 2017</div>
-                            <div class="post-01__note">by Raymond Mendoza</div>
-                        </div>
-                    </div><!-- End /  -->
-
-
-                    <!--  -->
-                    <div>
-                        <div class="post-01__media"><a href="#"><img src="assets/img/blogs/related-2.jpg" alt=""/></a>
-                        </div>
-                        <div>
-                            <ul class="post-01__categories">
-                                <li><a href="#">Business</a></li>
-                            </ul>
-                            <h2 class="post-01__title"><a href="#">Best National Locations</a></h2>
-                            <div class="post-01__time">Aug 14, 2017</div>
-                            <div class="post-01__note">by Alice Brooks</div>
-                        </div>
-                    </div><!-- End /  -->
-
-
-                    <!--  -->
-                    <div>
-                        <div class="post-01__media"><a href="#"><img src="assets/img/blogs/related-3.jpg" alt=""/></a>
-                        </div>
-                        <div>
-                            <ul class="post-01__categories">
-                                <li><a href="#">Business Law</a></li>
-                            </ul>
-                            <h2 class="post-01__title"><a href="#">Is UX Really That Important?</a></h2>
-                            <div class="post-01__time">Aug 14, 2017</div>
-                            <div class="post-01__note">by Jose Snyder</div>
-                        </div>
-                    </div><!-- End /  -->
-
+                            <div class="post-01__media">
+                                <a href="{{route('post', $post->slug)}}">
+                                    <img src="{{$post->getImage()}}" alt="Image for post"/>
+                                </a>
+                            </div>
+                            <div>
+                                <ul class="post-01__categories">
+                                    <li>
+                                        <a href="{{route('post.category', $post->category->slug)}}">
+                                            <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                                            {{$post->category->title}}
+                                        </a>
+                                    </li>
+                                </ul>
+                                <h2 class="post-01__title">
+                                    <a href="{{route('post', $post->slug)}}">{{$post->title}}</a>
+                                </h2>
+                                <div class="post-01__time">{{$post->getPostDate()}}</div>
+                                <div class="post-01__note" style="margin-left: 15px">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    {{$post->view}}
+                                </div>
+                            </div>
+                        </div><!-- End Post  -->
+                    @endforeach
                 </div><!-- End / carousel__element owl-carousel -->
 
             </div>

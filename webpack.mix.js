@@ -38,8 +38,8 @@ mix.copy('resources/assets/admin/img', 'public/assets/admin/img');
 
 mix.styles([
     'resources/assets/front/vendors/bootstrap4/bootstrap-grid.min.css',
-/*    'resources/assets/front/vendors/magnific-popup/magnific-popup.min.css',
-    'resources/assets/front/vendors/owl.carousel/owl.carousel.css',*/
+    'resources/assets/front/vendors/magnific-popup/magnific-popup.min.css',
+    'resources/assets/front/vendors/owl.carousel/owl.carousel.css',
     'resources/assets/front/css/main.css',
 ], 'public/assets/front/css/style.css');
 
@@ -53,12 +53,9 @@ mix.scripts([
     'resources/assets/front/vendors/jquery.waypoints/jquery.waypoints.min.js',
     'resources/assets/front/vendors/isotope-layout/isotope.pkgd.js',
     'resources/assets/front/vendors/masonry-layout/masonry.pkgd.js',
-
-/*
     'resources/assets/front/vendors/imagesloaded/imagesloaded.pkgd.js',
     'resources/assets/front/vendors/owl.carousel/owl.carousel.js',
     'resources/assets/front/vendors/magnific-popup/jquery.magnific-popup.min.js',
-    */
     'resources/assets/front/vendors/menu/menu.min.js',
     'resources/assets/front/vendors/smoothscroll/SmoothScroll.min.js',
     'resources/assets/front/js/main.js',

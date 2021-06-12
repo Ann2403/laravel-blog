@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Http\Requests\StorePost;
+use Carbon\Carbon;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -67,5 +68,10 @@ class Post extends Model
             return asset("no_image.jpg");
         }
         return asset("uploads/$this->thumbnail");
+    }
+
+    public function getPostDate() {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)
+                ->format('d F, Y');
     }
 }

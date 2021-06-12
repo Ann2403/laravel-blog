@@ -22,7 +22,7 @@
             <div class="widget-text__content">
                 <ul>
                     @foreach($categories as $category)
-                        <li><a href="#">{{$category->title}}</a></li>
+                        <li><a href="{{route('post.category', $category->slug)}}">{{$category->title}}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -32,43 +32,17 @@
         <section class="widget-text__widget widget-text__style-04 widget">
             <h3 class="widget-title">recent post</h3>
             <div class="widget-text__content">
-
-                <!--  -->
-                <div class="post-01__style-03">
-                    <div>
-                        <h2 class="post-01__title"><a href="#">Design a Perfect Homepage</a></h2>
-                        <div class="post-01__time">Oct 26, 2017</div>
-                        <div class="post-01__note">by Alice Brooks</div>
-                    </div>
-                </div><!-- End /  -->
-
-                <!--  -->
-                <div class="post-01__style-03">
-                    <div>
-                        <h2 class="post-01__title"><a href="#">How to Master Microcopy</a></h2>
-                        <div class="post-01__time">Oct 28, 2017</div>
-                        <div class="post-01__note">by Ann Fowler</div>
-                    </div>
-                </div><!-- End /  -->
-
-                <!--  -->
-                <div class="post-01__style-03">
-                    <div>
-                        <h2 class="post-01__title"><a href="#">How to Master Microcopy</a></h2>
-                        <div class="post-01__time">Oct 10, 2017</div>
-                        <div class="post-01__note">by Brandon Hanson</div>
-                    </div>
-                </div><!-- End /  -->
-
-                <!--  -->
-                <div class="post-01__style-03">
-                    <div>
-                        <h2 class="post-01__title"><a href="#">Design a Perfect Homepage</a></h2>
-                        <div class="post-01__time">Oct 19, 2017</div>
-                        <div class="post-01__note">by Brandon Hanson</div>
-                    </div>
-                </div><!-- End /  -->
-
+                @foreach($posts as $post)
+                    @if($loop->index < 3)
+                        <!-- post -->
+                            <div class="post-01__style-03">
+                                <div>
+                                    <h2 class="post-01__title"><a href="{{route('post', $post->slug)}}">{{$post->title}}</a></h2>
+                                    <div class="post-01__time">{{$post->getPostDate()}}</div>
+                                </div>
+                            </div><!-- End post  -->
+                    @endif
+                @endforeach
             </div>
         </section><!-- End Recent Post -->
 
